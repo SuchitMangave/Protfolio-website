@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Devicon Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <!-- Favicon -->
     <link id='favicon' rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-png">
     <title>Portfolio | Suchit Mangave</title>
@@ -23,7 +25,7 @@
 
 <!-- navbar starts -->
 <header>
-        <a href="/" class="logo"><i class="fab fa-node-js"></i> Suchit </a>
+        <a href="#home" class="logo"><i class="fab fa-node-js"></i> Suchit </a>
 
         <div id="menu" class="fas fa-bars"></div>
         <nav class="navbar">
@@ -115,90 +117,230 @@
 
     <h2 class="heading"><i class="fas fa-laptop-code"></i> Skills & <span>Abilities</span></h2>
 
+    <!-- Skill Category Filter -->
+    <div class="skills-filter-container">
+        <button class="skill-filter-btn active" data-filter="all"><i class="fas fa-layer-group"></i> All Skills</button>
+        <button class="skill-filter-btn" data-filter="backend"><i class="fas fa-server"></i> Backend & Core</button>
+        <button class="skill-filter-btn" data-filter="frontend"><i class="fas fa-code"></i> Frontend</button>
+        <button class="skill-filter-btn" data-filter="tools"><i class="fas fa-tools"></i> Database & Tools</button>
+    </div>
+
     <div class="container">
-          <div class="row" id="skillsContainer">
- <section>
-        <div class="container1" id="Skills">
-            <h1 class="sub-title">My <span>Skills</span></h1>
-            <h1 class="heading1">Technical Skills</h1>
-            <div class="Technical-bars">
-                <div class="bar">
-                    <div class="info">
-                        <i style="color: #c95d2e" class='bx bxl-html5'></i>
-                        <span>HTML</span>
-                    </div>
-                    <div class="progress-line html">
-                        <span></span>
-                    </div>
+        <div class="skills-grid" id="skillsContainer">
+
+            <!-- Backend & Core -->
+            <div class="skill-card tilt" data-category="backend">
+                <div class="skill-icon-wrapper">
+                    <i class="devicon-java-plain colored"></i>
                 </div>
-                <div class="bar">
-                    <div class="info">
-                        <i style="color: #147bbc" class='bx bxl-css3'></i>
-                        <span>CSS</span>
+                <div class="skill-details">
+                    <div class="skill-head">
+                        <h3>Java</h3>
+                        <span class="skill-badge">Advanced</span>
                     </div>
-                    <div class="progress-line css">
-                        <span></span>
+                    <div class="skill-progress-wrap">
+                        <div class="skill-progress-bar" style="--skill-pct: 90%;"></div>
                     </div>
-                </div>
-                <div class="bar">
-                    <div class="info">
-                        <i style="color: #bebcbe" class='bx bxl-javascript'></i>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="progress-line JavaScript">
-                        <span></span>
-                    </div>
-                </div>
-                <div class="bar">
-                    <div class="info">
-                        <i style="color: #b837bd" class='bx bxl-java'></i>
-                        <span>JAVA</span>
-                    </div>
-                    <div class="progress-line java">
-                        <span></span>
-                    </div>
-                </div>
-                <div class="bar">
-                    <div class="info">
-                        <i style="color: #65e610" class='bx bxl-react'></i>
-                        <span>React</span>
-                    </div>
-                    <div class="progress-line react">
-                        <span></span>
-                    </div>
-                </div>
-                <div class="bar">
-                    <div class="info">
-                        <i style="color: #6DB33F" class='bx bxl-spring-boot'></i>
-                        <span>Spring Boot</span>
-                    </div>
-                    <div class="progress-line springboot">
-                        <span></span>
-                    </div>
-                </div>
-                <div class="bar">
-                    <div class="info">
-                        <i style="color: #D9691E" class='bx bxs-data'></i>
-                        <span>Hibernate</span>
-                    </div>
-                    <div class="progress-line hibernate">
-                        <span></span>
-                    </div>
-                </div>
-                <div class="bar">
-                    <div class="info">
-                        <i style="color: #336791" class='bx bxl-postgresql'></i>
-                        <span>SQL</span>
-                    </div>
-                    <div class="progress-line sql">
-                        <span></span>
-                    </div>
+                    <div class="skill-pct-label">90%</div>
                 </div>
             </div>
-        </div>
 
-      </div>
-</div>
+            <div class="skill-card tilt" data-category="backend">
+                <div class="skill-icon-wrapper">
+                    <i class="devicon-spring-original colored"></i>
+                </div>
+                <div class="skill-details">
+                    <div class="skill-head">
+                        <h3>Spring Boot</h3>
+                        <span class="skill-badge">Advanced</span>
+                    </div>
+                    <div class="skill-progress-wrap">
+                        <div class="skill-progress-bar" style="--skill-pct: 85%;"></div>
+                    </div>
+                    <div class="skill-pct-label">85%</div>
+                </div>
+            </div>
+
+            <div class="skill-card tilt" data-category="backend">
+                <div class="skill-icon-wrapper">
+                    <i class="devicon-hibernate-plain colored"></i>
+                </div>
+                <div class="skill-details">
+                    <div class="skill-head">
+                        <h3>Hibernate</h3>
+                        <span class="skill-badge">Proficient</span>
+                    </div>
+                    <div class="skill-progress-wrap">
+                        <div class="skill-progress-bar" style="--skill-pct: 80%;"></div>
+                    </div>
+                    <div class="skill-pct-label">80%</div>
+                </div>
+            </div>
+
+            <div class="skill-card tilt" data-category="backend">
+                <div class="skill-icon-wrapper">
+                    <i class="devicon-postgresql-plain colored"></i>
+                </div>
+                <div class="skill-details">
+                    <div class="skill-head">
+                        <h3>SQL / Postgres</h3>
+                        <span class="skill-badge">Advanced</span>
+                    </div>
+                    <div class="skill-progress-wrap">
+                        <div class="skill-progress-bar" style="--skill-pct: 85%;"></div>
+                    </div>
+                    <div class="skill-pct-label">85%</div>
+                </div>
+            </div>
+
+            <!-- Frontend -->
+            <div class="skill-card tilt" data-category="frontend">
+                <div class="skill-icon-wrapper">
+                    <i class="devicon-react-original colored"></i>
+                </div>
+                <div class="skill-details">
+                    <div class="skill-head">
+                        <h3>React</h3>
+                        <span class="skill-badge">Proficient</span>
+                    </div>
+                    <div class="skill-progress-wrap">
+                        <div class="skill-progress-bar" style="--skill-pct: 80%;"></div>
+                    </div>
+                    <div class="skill-pct-label">80%</div>
+                </div>
+            </div>
+
+            <div class="skill-card tilt" data-category="frontend">
+                <div class="skill-icon-wrapper">
+                    <i class="devicon-javascript-plain colored"></i>
+                </div>
+                <div class="skill-details">
+                    <div class="skill-head">
+                        <h3>JavaScript</h3>
+                        <span class="skill-badge">Advanced</span>
+                    </div>
+                    <div class="skill-progress-wrap">
+                        <div class="skill-progress-bar" style="--skill-pct: 85%;"></div>
+                    </div>
+                    <div class="skill-pct-label">85%</div>
+                </div>
+            </div>
+
+            <div class="skill-card tilt" data-category="frontend">
+                <div class="skill-icon-wrapper">
+                    <i class="devicon-html5-plain colored"></i>
+                </div>
+                <div class="skill-details">
+                    <div class="skill-head">
+                        <h3>HTML5</h3>
+                        <span class="skill-badge">Expert</span>
+                    </div>
+                    <div class="skill-progress-wrap">
+                        <div class="skill-progress-bar" style="--skill-pct: 95%;"></div>
+                    </div>
+                    <div class="skill-pct-label">95%</div>
+                </div>
+            </div>
+
+            <div class="skill-card tilt" data-category="frontend">
+                <div class="skill-icon-wrapper">
+                    <i class="devicon-css3-plain colored"></i>
+                </div>
+                <div class="skill-details">
+                    <div class="skill-head">
+                        <h3>CSS3</h3>
+                        <span class="skill-badge">Advanced</span>
+                    </div>
+                    <div class="skill-progress-wrap">
+                        <div class="skill-progress-bar" style="--skill-pct: 90%;"></div>
+                    </div>
+                    <div class="skill-pct-label">90%</div>
+                </div>
+            </div>
+
+            <!-- Database & Tools -->
+            <div class="skill-card tilt" data-category="tools">
+                <div class="skill-icon-wrapper">
+                    <i class="devicon-mysql-original colored"></i>
+                </div>
+                <div class="skill-details">
+                    <div class="skill-head">
+                        <h3>MySQL</h3>
+                        <span class="skill-badge">Proficient</span>
+                    </div>
+                    <div class="skill-progress-wrap">
+                        <div class="skill-progress-bar" style="--skill-pct: 85%;"></div>
+                    </div>
+                    <div class="skill-pct-label">85%</div>
+                </div>
+            </div>
+
+            <div class="skill-card tilt" data-category="tools">
+                <div class="skill-icon-wrapper">
+                    <i class="devicon-git-plain colored"></i>
+                </div>
+                <div class="skill-details">
+                    <div class="skill-head">
+                        <h3>Git</h3>
+                        <span class="skill-badge">Advanced</span>
+                    </div>
+                    <div class="skill-progress-wrap">
+                        <div class="skill-progress-bar" style="--skill-pct: 85%;"></div>
+                    </div>
+                    <div class="skill-pct-label">85%</div>
+                </div>
+            </div>
+
+            <div class="skill-card tilt" data-category="tools">
+                <div class="skill-icon-wrapper">
+                    <i class="devicon-github-original"></i>
+                </div>
+                <div class="skill-details">
+                    <div class="skill-head">
+                        <h3>GitHub</h3>
+                        <span class="skill-badge">Advanced</span>
+                    </div>
+                    <div class="skill-progress-wrap">
+                        <div class="skill-progress-bar" style="--skill-pct: 90%;"></div>
+                    </div>
+                    <div class="skill-pct-label">90%</div>
+                </div>
+            </div>
+
+            <div class="skill-card tilt" data-category="tools">
+                <div class="skill-icon-wrapper">
+                    <i class="devicon-vscode-plain colored"></i>
+                </div>
+                <div class="skill-details">
+                    <div class="skill-head">
+                        <h3>VS Code</h3>
+                        <span class="skill-badge">Advanced</span>
+                    </div>
+                    <div class="skill-progress-wrap">
+                        <div class="skill-progress-bar" style="--skill-pct: 90%;"></div>
+                    </div>
+                    <div class="skill-pct-label">90%</div>
+                </div>
+            </div>
+
+            <div class="skill-card tilt" data-category="tools">
+                <div class="skill-icon-wrapper">
+                    <i class="devicon-postman-plain colored"></i>
+                </div>
+                <div class="skill-details">
+                    <div class="skill-head">
+                        <h3>Postman</h3>
+                        <span class="skill-badge">Proficient</span>
+                    </div>
+                    <div class="skill-progress-wrap">
+                        <div class="skill-progress-bar" style="--skill-pct: 80%;"></div>
+                    </div>
+                    <div class="skill-pct-label">80%</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </section>
 <!-- skills section ends -->
 
@@ -390,21 +532,21 @@
 
       <div class="box">
           <h3>contact info</h3>
-          <p> <i class="fas fa-phone"></i>+91 XXX-XXX-XXXX</p>
+          <p> <i class="fas fa-phone"></i>+91 7620226978</p>
           <p> <i class="fas fa-envelope"></i>suchitmangave@gmail.com</p>
           <p> <i class="fas fa-map-marked-alt"></i>MH, India-416103</p>
           <div class="share">
 
-              <a href="https://www.linkedin.com/in/jigar-sable" class="fab fa-linkedin" aria-label="LinkedIn" target="_blank"></a>
-              <a href="https://github.com/jigar-sable" class="fab fa-github" aria-label="GitHub" target="_blank"></a>
-              <a href="mailto:jigarsable21@gmail.com" class="fas fa-envelope" aria-label="Mail" target="_blank"></a>
-              <a href="https://twitter.com/jigar_sable" class="fab fa-twitter" aria-label="Twitter" target="_blank"></a>
-              <a href="https://t.me/lifecode5" class="fab fa-telegram-plane" aria-label="Telegram" target="_blank"></a>
+              <a href="https://www.linkedin.com/in/suchit-Mangave" class="fab fa-linkedin" aria-label="LinkedIn" target="_blank"></a>
+              <a href="https://github.com/suchitMangave" class="fab fa-github" aria-label="GitHub" target="_blank"></a>
+              <a href="mailto:suchitmangave@gmail.com" class="fas fa-envelope" aria-label="Mail" target="_blank"></a>
+              <a href="https://twitter.com/suchit_mangave" class="fab fa-twitter" aria-label="Twitter" target="_blank"></a>
+              <a href="https://t.me/suchitMangave" class="fab fa-telegram-plane" aria-label="Telegram" target="_blank"></a>
           </div>
       </div>
   </div>
 
-  <h1 class="credit">Designed with <i class="fa fa-heart pulse"></i> by <a href="https://www.linkedin.com/in/jigar-sable"> suchit_mangave</a></h1>
+  <h1 class="credit">Designed with <i class="fa fa-heart pulse"></i> by <a href="https://www.linkedin.com/in/suchit-Mangave"> suchit_mangave</a></h1>
 
 </section>
 <!-- footer section ends -->

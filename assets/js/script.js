@@ -62,6 +62,8 @@ $(document).ready(function () {
     });
     // <!-- emailjs to mail contact form data -->
 
+    initSkillFilters();
+
 });
 
 document.addEventListener('visibilitychange',
@@ -88,28 +90,72 @@ var typed = new Typed(".typing-text", {
 // <!-- typed js effect ends -->
 
 async function fetchData(type = "skills") {
-    let response
-    type === "skills" ?
-        response = await fetch("skills.json")
-        :
-        response = await fetch("./projects/projects.json")
-    const data = await response.json();
-    return data;
+    try {
+        let response = type === "skills" ? await fetch("skills.json") : await fetch("./projects/projects.json");
+        if (!response.ok) return [];
+        return await response.json();
+    } catch (err) {
+        console.warn(`Could not load ${type}.json:`, err);
+        return [];
+    }
+}
+
+function initSkillFilters() {
+    const filterButtons = document.querySelectorAll('.skill-filter-btn');
+    const skillCards = document.querySelectorAll('.skill-card');
+
+    if (!filterButtons.length || !skillCards.length) return;
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            skillCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                if (filterValue === 'all' || cardCategory === filterValue) {
+                    card.classList.remove('is-hidden');
+                } else {
+                    card.classList.add('is-hidden');
+                }
+            });
+        });
+    });
 }
 
 function showSkills(skills) {
     let skillsContainer = document.getElementById("skillsContainer");
+    if (!skillsContainer) return;
+
+    // If cards are already pre-rendered in HTML, retain them and initialize filters
+    if (skillsContainer.children.length > 0) {
+        initSkillFilters();
+        return;
+    }
+
     let skillHTML = "";
     skills.forEach(skill => {
         skillHTML += `
-        <div class="bar">
-              <div class="info">
-                <img src=${skill.icon} alt="skill" />
-                <span>${skill.name}</span>
-              </div>
-            </div>`
+        <div class="skill-card tilt" data-category="${skill.category || 'backend'}">
+            <div class="skill-icon-wrapper">
+                <img src="${skill.icon}" alt="${skill.name}" style="width: 3.4rem; height: 3.4rem;" />
+            </div>
+            <div class="skill-details">
+                <div class="skill-head">
+                    <h3>${skill.name}</h3>
+                    <span class="skill-badge">${skill.level || 'Advanced'}</span>
+                </div>
+                <div class="skill-progress-wrap">
+                    <div class="skill-progress-bar" style="--skill-pct: ${skill.percentage || 85}%;"></div>
+                </div>
+                <div class="skill-pct-label">${skill.percentage || 85}%</div>
+            </div>
+        </div>`;
     });
     skillsContainer.innerHTML = skillHTML;
+    initSkillFilters();
 }
 
 function showProjects(projects) {
@@ -241,8 +287,9 @@ srtop.reveal('.about .content .resumebtn', { delay: 200 });
 
 
 /* SCROLL SKILLS */
-srtop.reveal('.skills .container', { interval: 200 });
-srtop.reveal('.skills .container .bar', { delay: 400 });
+srtop.reveal('.skills .skills-filter-container', { delay: 200 });
+srtop.reveal('.skills .container', { delay: 300 });
+srtop.reveal('.skills .skill-card', { interval: 100 });
 
 /* SCROLL EDUCATION */
 srtop.reveal('.education .box', { interval: 200 });
