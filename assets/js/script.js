@@ -42,25 +42,51 @@ $(document).ready(function () {
         }, 500, 'linear')
     });
 
-    // <!-- emailjs to mail contact form data -->
+       // <!-- web3forms to mail contact form data -->
     $("#contact-form").submit(function (event) {
+        event.preventDefault();
+
         // Convert email to lowercase
         $('input[name="email"]').val($('input[name="email"]').val().toLowerCase());
-        
-        emailjs.init("DPkj5QZmbBB1AOvvL");
 
-        emailjs.sendForm('contact_service', 'template_contact', '#contact-form')
-            .then(function (response) {
-                console.log('SUCCESS!', response.status, response.text);
-                document.getElementById("contact-form").reset();
-                alert("Form Submitted Successfully");
-            }, function (error) {
-                console.log('FAILED...', error);
+        const form = document.getElementById("contact-form");
+        const submitBtn = form.querySelector("button[type='submit']");
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = "Sending...";
+        submitBtn.disabled = true;
+
+        const formData = new FormData(form);
+        const jsonData = JSON.stringify(Object.fromEntries(formData));
+
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: jsonData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    form.reset();
+                    alert("Form Submitted Successfully");
+                } else {
+                    console.log("FAILED...", data);
+                    alert("Form Submission Failed! Try Again");
+
+                }
+            })
+            .catch(error => {
+                console.log("FAILED...", error);
                 alert("Form Submission Failed! Try Again");
+            })
+            .finally(() => {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
             });
-        event.preventDefault();
     });
-    // <!-- emailjs to mail contact form data -->
+    // <!-- web3forms to mail contact form data -->
 
     initSkillFilters();
 
